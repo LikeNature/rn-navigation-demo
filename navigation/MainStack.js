@@ -7,7 +7,7 @@ import ProfileScreen from "../screen/ProfileScreen";
 
 const Stack = createStackNavigator();
 
-const MainStack = ({ navigation, route }: RootList<"HomeTab">) => {
+const MainStack = ({ navigation, route }) => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown : false}}/>

@@ -6,7 +6,7 @@ import SubStack from "./SubStack";
 
 const Tab = createBottomTabNavigator();
 
-const BottomNav = ({ navigation, route }: RootParam<"Root">) => {
+const BottomNav = ({ navigation, route }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="HomeTab" component={MainStack} />

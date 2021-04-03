@@ -6,7 +6,7 @@ import ItemScreen from "../screen/ItemScreen";
 
 const Stack = createStackNavigator();
 
-const SubTab = ({ navigation, route }: RootList<"SubTab">) => {
+const SubTab = ({ navigation, route }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="CartScreen" component={CartScreen} />

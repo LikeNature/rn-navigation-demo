@@ -7,10 +7,10 @@ import Animated ,{ interpolate, Extrapolate} from "react-native-reanimated";
 import {useValue, useTransition } from 'react-native-redash/src/v1'
 
 
-const ItemScreen = ({ navigation, route }: SubParamList<"ItemScreen">) => {
+const ItemScreen = ({ navigation, route }) => {
 
   const idx = route.params?.idx?? 0
-  const [card, setCard] = useState<ListProps | any>({})
+  const [card, setCard] = useState({})
   const [long, setLong] = useState(false)
   const progress = useTransition(long);
 
@@ -30,9 +30,9 @@ const ItemScreen = ({ navigation, route }: SubParamList<"ItemScreen">) => {
   },[idx])
 
   const Card = ({item})=> {
-    const {title, content, color } : ListProps = item
+    const {title, content, color } = item
     return (
-   
+
         <Animated.View style={{height : height, margin : Padding, padding : Padding, borderRadius :8, borderWidth : 2, borderColor : color }}>
             <Text>
               제목 : {title}
@@ -56,7 +56,7 @@ const ItemScreen = ({ navigation, route }: SubParamList<"ItemScreen">) => {
           activeOpacity = {1}
           onPress={() => setLong( p => !p)}
           onLongPress ={ () => navigation.navigate('HomeScreen')}>
-          <Card item = {card}/>  
+          <Card item = {card}/>
         </TouchableOpacity>
     </SafeAreaView>
   );

@@ -11,13 +11,6 @@ export const Height = Dimensions.get('window').height;
 export const Padding = 10;
 
 
-export interface ListProps {
-  id : number
-  title : string
-  content : string
-  color : string
-}
-
 export const List = [
   { id : 0 , title : '오늘 할일' , content : '주말에 놀기  주말에 놀기 주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기주말에 놀기  주말에 놀기', color : '#7780dc'},
   { id : 1 , title : '내일 할일' , content : '일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 일요일 계획 v v 일요일 계획  일요일 계획', color : '#70c773'},
@@ -29,9 +22,9 @@ export const List = [
 ]
 
 export const Card = ({item})=> {
-  const {title, content, color } : ListProps = item
+  const {title, content, color } = item
   return (
- 
+
       <View style={{margin : Padding, padding : Padding, borderRadius :8, borderWidth : 2, borderColor : color }}>
           <Text>
             제목 : {title}
@@ -49,17 +42,17 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
 
 
   const [ nubmer, setNumber ] = useState(0)
-  const [ amount, setAmount ] = useState<boolean>(false)
-  const [ array, setArray ] = useState<ListProps[]>([])
-  const [ viewArray, setViewArray] = useState<ListProps[]>([])
-  const [ text, setText] = useState<string>('할')
+  const [ amount, setAmount ] = useState(false)
+  const [ array, setArray ] = useState([])
+  const [ viewArray, setViewArray] = useState([])
+  const [ text, setText] = useState('할')
 
   useEffect( () => {
    setArray([...List])
    setViewArray([...List])
-   
+
    const filter = List.filter( (item) => item.content.indexOf(text) !== -1 || item.title.indexOf(text) !== -1)
-   
+
    setViewArray([...filter])
 
   }, [text])
@@ -77,7 +70,7 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
           </Text>
         </View>
         <View style={{margin : Padding}}>
-        <TextInput onChangeText={(text : string) => setText(text)} placeholder="검색"/>
+        <TextInput onChangeText={(text) => setText(text)} placeholder="검색"/>
         </View>
         {viewArray.length === 0 && (
         <View style={{margin : Padding}}>
@@ -85,7 +78,7 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
             검색결과가 없습니다.
             </Text>
             </View>)}
-        {viewArray.map((item : ListProps , i : number) => 
+        {viewArray.map((item, i) =>
           <TouchableOpacity onPress={ () => navigation.navigate('SubTab', {screen : 'ItemScreen', params : {idx : item.id}})}>
             <Card item={item} />
           </TouchableOpacity>

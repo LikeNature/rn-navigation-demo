@@ -54,7 +54,6 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
    const filter = List.filter( (item) => item.content.indexOf(text) !== -1 || item.title.indexOf(text) !== -1)
 
    setViewArray([...filter])
-   navigation.addEventListener( "focus", () => setText('') )
 
   }, [text])
 

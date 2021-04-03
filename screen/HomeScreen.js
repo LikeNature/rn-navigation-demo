@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
   const [ amount, setAmount ] = useState(false)
   const [ array, setArray ] = useState([])
   const [ viewArray, setViewArray] = useState([])
-  const [ text, setText] = useState('할')
+  const [ text, setText] = useState('')
 
   useEffect( () => {
    setArray([...List])
@@ -54,6 +54,7 @@ const HomeScreen = ({ navigation, route }: MainParamList<"HomeScreen">) => {
    const filter = List.filter( (item) => item.content.indexOf(text) !== -1 || item.title.indexOf(text) !== -1)
 
    setViewArray([...filter])
+   navigation.addEventListener( "focus", () => setText('') )
 
   }, [text])
 
